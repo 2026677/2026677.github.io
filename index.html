@@ -210,9 +210,9 @@
     }
 
     let head = {x: snake[0].x + dx, y: snake[0].y + dy};
-    if (head.x < 0 || head.x > 300 || head.y < 0 || head.y > 300 || snake.some(p => p.x === head.x && p.y === head.y)) {
-      alert("Game Over!");
+    if (head.x < 0 || head.x >= 300 || head.y < 0 || head.y >= 300 || snake.some(p => p.x === head.x && p.y === head.y)) {
       startSnake();
+      alert("Game Over!");
       return;
     }
 
