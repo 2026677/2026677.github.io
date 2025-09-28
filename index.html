@@ -44,6 +44,16 @@
         nav ul li {
             margin: 5px;
         }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: #1e3a8a;
+        }
         nav ul li a {
             text-decoration: none;
             color: #1e3a8a;
@@ -65,7 +75,21 @@
                 font-size: 15px;
             }
         }
-        @media (max-width: 810px) {
+        @media (max-width: 815px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 10px;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+        @media (max-width: 350px) {
             #logo {
                 display: none;
             }
@@ -75,6 +99,11 @@
 <body>
     <nav>
         <a href="index.html"> <img id="logo" src="/logo.png" alt="Exploring Science Night Logo"> </a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="activities.html">Activities</a></li>
@@ -82,5 +111,10 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
+    <script>
+        function toggleMenu() {
+            document.querySelector("nav ul").classList.toggle("show");
+        }
+    </script>
 </body>
 </html>
