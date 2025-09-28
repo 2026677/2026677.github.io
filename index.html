@@ -16,10 +16,7 @@
         nav {
             background: #ffffff;
             border-bottom: 1px solid #e5e7eb;
-            padding-left: 10vw;
-            padding-right: 10vw;
-            padding-top: 10px;
-            padding-bottom: 10px;
+            padding: 10px 10vw;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -27,6 +24,7 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
+            position: relative;
         }
         #logo {
             height: 50px;
@@ -41,19 +39,6 @@
             gap: 25px;
             flex-wrap: wrap;
         }
-        nav ul li {
-            margin: 5px;
-        }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background: #1e3a8a;
-        }
         nav ul li a {
             text-decoration: none;
             color: #1e3a8a;
@@ -67,6 +52,17 @@
             color: #2563eb;
             border-bottom: 2px solid #2563eb;
         }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: #1e3a8a;
+        }
         @media (max-width: 1000px) {
             #logo {
                 height: 40px;
@@ -76,17 +72,31 @@
             }
         }
         @media (max-width: 815px) {
+            .hamburger {
+                display: flex;
+            }
             nav ul {
                 display: none;
                 flex-direction: column;
-                width: 100%;
-                margin-top: 10px;
+                position: absolute;
+                top: 100%;
+                right: 10vw;
+                background: #ffffff;
+                border: 1px solid #e5e7eb;
+                border-radius: 5px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                width: max-content;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                max-height: 0;
             }
             nav ul.show {
                 display: flex;
+                max-height: 500px;
             }
-            .hamburger {
-                display: flex;
+            nav ul li {
+                margin: 0;
+                padding: 8px 12px;
             }
         }
         @media (max-width: 350px) {
@@ -98,13 +108,13 @@
 </head>
 <body>
     <nav>
-        <a href="index.html"> <img id="logo" src="/logo.png" alt="Exploring Science Night Logo"> </a>
-        <div class="hamburger" onclick="toggleMenu()">
+        <a href="index.html"><img id="logo" src="/logo.png" alt="Exploring Science Night Logo"></a>
+        <div class="hamburger" onclick="hamburgerMenu()">
             <div></div>
             <div></div>
             <div></div>
         </div>
-        <ul>
+        <ul id="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="activities.html">Activities</a></li>
             <li><a href="about.html">About Us</a></li>
@@ -112,8 +122,9 @@
         </ul>
     </nav>
     <script>
-        function toggleMenu() {
-            document.querySelector("nav ul").classList.toggle("show");
+        function hamburgerMenu() {
+            const navLinks = document.getElementById("nav-links");
+            navLinks.classList.toggle("show");
         }
     </script>
 </body>
