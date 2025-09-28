@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exploring Science Night</title>
+  <link rel="icon" type="image/x-icon" href="/favicon-16X16.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    nav {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 10px 10vw;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    #logo {
+      height: 50px;
+      width: auto;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #1e3a8a;
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 6px 4px;
+      transition: color 0.2s, border-bottom 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+    nav ul li a.active {
+      color: #11801f;
+      border-bottom: 2px solid #11801f;
+    }
+    nav ul li a:hover {
+      color: #2563eb;
+      border-bottom: 2px solid #2563eb;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #1e3a8a;
+    }
+    @media (max-width: 1100px) {
+      #logo {
+        height: 40px;
+      }
+      nav ul li a {
+        font-size: 15px;
+      }
+    }
+    @media (max-width: 850px) {
+      .hamburger {
+        display: flex;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 10vw;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        width: max-content;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        max-height: 0;
+        gap: 0;
+      }
+      nav ul.show {
+        display: flex;
+        max-height: 500px;
+      }
+      nav ul li {
+        margin: 0;
+        padding: 4px 12px;
+      }
+    }
+    @media (max-width: 350px) {
+      #logo {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html"><img id="logo" src="/logo.png" alt="Exploring Science Night Logo"></a>
+  <div class="hamburger" onclick="hamburgerMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <ul id="nav-links">
+    <li><a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>
+    <li><a href="activities.html" class="active"><i class="fa fa-check-square-o"></i> Activities</a></li>
+    <li><a href="about.html"><i class="fa fa-info-circle"></i> About Us</a></li>
+    <li><a href="contact.html"><i class="fa fa-fw fa-envelope"></i> Contact</a></li>
+  </ul>
+</nav>
+<script>
+  function hamburgerMenu() {
+    const navLinks = document.getElementById("nav-links");
+    navLinks.classList.toggle("show");
+  }
+</script>
+</body>
+</html>
